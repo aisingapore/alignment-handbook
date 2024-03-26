@@ -1,0 +1,47 @@
+# Model arguments
+model_name_or_path: google/gemma-7b
+model_revision: main
+tokenizer_name_or_path: aisingapore/sea-lion-7b
+torch_dtype: bfloat16
+trust_remote_code: true
+use_flash_attention_2: true
+
+# Data training arguments
+dataset_mixer:
+  yhavinga/mc4_nl_cleaned: 1.0
+dataset_splits:
+  - train
+dataset_configs:
+  - micro
+preprocessing_num_workers: 12
+
+# SFT trainer config
+bf16: true
+do_eval: false
+evaluation_strategy: "no"
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 2.0e-04
+log_level: info
+logging_steps: 5
+logging_strategy: steps
+lr_scheduler_type: cosine
+max_seq_length: 2048
+max_steps: -1
+num_train_epochs: 1
+output_dir: data/gemma-7b-cpt
+overwrite_output_dir: true
+per_device_eval_batch_size: 1
+per_device_train_batch_size: 1
+remove_unused_columns: true
+report_to:
+  - tensorboard
+save_strategy: "steps"
+save_steps: 50
+seed: 42
+warmup_ratio: 0.1
+hub_model_id: zephyr-7b-gemma-dutch
+hub_strategy: every_save
+push_to_hub: false
