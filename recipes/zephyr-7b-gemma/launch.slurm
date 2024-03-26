@@ -14,7 +14,7 @@ export HF_HOME="${SHARED_FS_DIR}/.cache/huggingface"
 export HF_DATASETS_CACHE="${HF_HOME}/datasets"
 
 source "${SHARED_FS_DIR}/miniconda3/etc/profile.d/conda.sh"
-conda activate "${SHARED_FS_DIR}/envs/alignment_handbook_2"
+conda activate "${SHARED_FS_DIR}/envs/alignment_handbook"
 export PATH=$(echo $PATH | sed -e "s|/home/$(whoami)/.local/bin:||")
 
 script_dir=$(cd -- "$(dirname -- ${BASH_SOURCE[0]})" &> /dev/null && pwd)
